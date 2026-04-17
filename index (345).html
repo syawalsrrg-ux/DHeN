@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHeeN | Grow with Revenge and Ambition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent-red: #dc2626;
+            --accent-blue: #1e3a8a;
+            --accent-cyan: #0891b2;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-800);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-900) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-red);
+            border-radius: 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-300) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            color: var(--accent-red);
+            -webkit-text-fill-color: var(--accent-red);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--gray-400);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-red);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray-600);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            opacity: 0.6;
+        }
+
+        .floating-text-1 {
+            top: 20%;
+            right: 10%;
+            transform: rotate(5deg);
+        }
+
+        .floating-text-2 {
+            bottom: 30%;
+            left: 5%;
+            transform: rotate(-3deg);
+        }
+
+        .floating-text-3 {
+            top: 60%;
+            right: 20%;
+            transform: rotate(-5deg);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gray-900);
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--gray-300);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlight {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .about-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-box {
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--gray-700);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .about-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--accent-cyan);
+            z-index: -1;
+        }
+
+        .about-box-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .about-box-sub {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-top: 0.5rem;
+        }
+
+        /* Principles Section */
+        .principles {
+            background: var(--black);
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .principle-card {
+            padding: 2.5rem;
+            border: 1px solid var(--gray-800);
+            background: rgba(255, 255, 255, 0.01);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--accent-red);
+            transition: height 0.3s ease;
+        }
+
+        .principle-card:hover {
+            border-color: var(--gray-600);
+            transform: translateY(-5px);
+        }
+
+        .principle-card:hover::before {
+            height: 100%;
+        }
+
+        .principle-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .principle-card:hover .principle-number {
+            color: var(--accent-red);
+        }
+
+        .principle-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+
+        .principle-desc {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Focus Section */
+        .focus {
+            background: var(--gray-900);
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .focus-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--gray-800);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .focus-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: var(--accent-blue);
+            transition: height 0.3s ease;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+        }
+
+        .focus-card:hover::after {
+            height: 4px;
+        }
+
+        .focus-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .focus-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .focus-desc {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--black);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--gray-800);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            color: var(--accent-red);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--gray-600);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--gray-300);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .testimonial-info h4 {
+            font-size: 0.9rem;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--gray-900) 0%, var(--black) 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--gray-300);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--gray-800);
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-red);
+            background: rgba(220, 38, 38, 0.05);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-800);
+            border-radius: 4px;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--accent-red);
+        }
+
+        .contact-info h4 {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-red);
+            background: rgba(220, 38, 38, 0.05);
+        }
+
+        .contact-note p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            border-top: 1px solid var(--gray-800);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        .footer-signature {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--black);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--gray-800);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .principles-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-box {
+                width: 250px;
+                height: 250px;
+            }
+
+            .floating-text {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-700);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">DHeeN</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#principles" class="nav-link">Prinsip</a></li>
+                <li><a href="#focus" class="nav-link">Fokus</a></li>
+                <li><a href="#testimonials" class="nav-link">Komentar</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <span class="hero-tag">Hello gess</span>
+            <h1>Ngapain buka link? <span>Mau kenalan ya? </span>gabisa udah punya cewe -_- </h1>
+            <p class="hero-subtitle">
+                udah gausah kepo tentang gw 
+                
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">
+                    Gass kepoin
+                    <span>→</span>
+                </a>
+                <a href="#focus" class="btn btn-outline">
+                    Ogah tapi penasaran
+                </a>
+            </div>
+        </div>
+        <span class="floating-text floating-text-1">Ngapain klik link?</span>
+        <span class="floating-text floating-text-2">Mau kenalan?</span>
+        <span class="floating-text floating-text-3">Gabisa, udah fokus.</span>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content animate-on-scroll">
+                    <div class="section-header">
+                        <span class="section-tag">About me.</span>
+                        <h2 class="section-title">Masih scroll?, kepo banget tentang gw :v</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            Gw cuma seorang yang <span class="about-highlight">fokus berkembang</span>. 
+                            Nggak banyak omong, nggak suka drama. Kalau udah punya target, 
+                            yang ada di kepala cuma satu: <span class="about-highlight">eksekusi</span>.
+                        </p>
+                        <p>
+                            Mindset kuat dan disiplin adalah fondasi utama. Saya percaya 
+                            bahwa <span class="about-highlight">konsistensi ngalahin motivasi</span> setiap hari. 
+                            Motivasi bisa hilang, tapi kebiasaan bagus yang tetap ngejalanin.
+                        </p>
+                        <p>
+                            Nggak butuh validasi dari orang lain, <span class="about-highlight">Grow in silence, let success make the noise.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="about-visual animate-on-scroll">
+                    <div class="about-box">
+                        <span class="about-box-text">DH</span>
+                        <span class="about-box-sub">Focus Mode: ON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles" id="principles">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Prinsip Hidup</span>
+                <h2 class="section-title">Aturan Main</h2>
+            </div>
+            <div class="principles-grid">
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-number">01</div>
+                    <h3 class="principle-title">Tidak Bergantung pada Siapa pun</h3>
+                    <p class="principle-desc">
+                        Beberapa hal dalam kehidupan mungkin harus di bantu dengan campur tangan orang lain, tapi bukan seluruhnya, make a decision, and execute, show that you can.                                                            
+-DHeN-
+                    </p>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-number">02</div>
+                    <h3 class="principle-title">Konsisten > Motivasi</h3>
+                    <p class="principle-desc">
+                        Motivasi datang dan pergi. Yang bertahan adalah kebiasaan dan 
+                        disiplin. Show up every day, even when you don't feel like it.
+                    </p>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-number">03</div>
+                    <h3 class="principle-title">Fokus > Ramai</h3>
+                    <p class="principle-desc">
+                        Lebih baik fokus satu hal dan jadi ahli, daripada ngelakuin 
+                        banyak hal tapi cuma setengah-setengah. Depth over breadth.
+                    </p>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-number">04</div>
+                    <h3 class="principle-title">Bagiku </h3>
+                    <p class="principle-desc">
+                        1% better every day. Compound effect is real. Small wins 
+                        hari ini jadi big achievements di masa depan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Section -->
+    <section class="focus" id="focus">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Fokus Saat Ini</span>
+                <h2 class="section-title">Area Prioritas</h2>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-card animate-on-scroll">
+                    <span class="focus-icon"> - </span>
+                    <h3 class="focus-title">Pengembangan Diri</h3>
+                    <p class="focus-desc">Gaada apa apa yang berubah, masih sama kayak yang dulu, makanya gausah kepo -_- </p>
+                </div>
+                <div class="focus-card animate-on-scroll">
+                    <span class="focus-icon"> - </span>
+                    <h3 class="focus-title">Bisnis & Kerja</h3>
+                    <p class="focus-desc">gaada duitnya (kere), wkwkwk</p>
+                </div>
+                <div class="focus-card animate-on-scroll">
+                    <span class="focus-icon"> - </span>
+                    <h3 class="focus-title">Finansial</h3>
+                    <p class="focus-desc">Pokoknya sama kayak yang baca deh, gapunya duit, wkwkwk</p>
+                </div>
+                <div class="focus-card animate-on-scroll">
+                    <span class="focus-icon"> - </span>
+                    <h3 class="focus-title">Skill </h3>
+                    <p class="focus-desc">Gatau mending turu hehe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Apa Kata Mereka</span>
+                <h2 class="section-title">Komentar</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">
+                        capek kalo kerja sama dia ni fokus banget, jarang main-main. Kalau lagi kerja, sekali bercanda kayak orang gila. 
+                        yang ada di pikirannya cuma "DUIT DUIT DUIT"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Andi W.</h4>
+                            <p>Rekan Kerja</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <p class="testimonial-text">
+                        Anjayy, mantep juga personal brandingnya thur, tutorin dong haha, Btw cwe nya orang mana? 
+kok ga bilang udah punya cwe?
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">C</div>
+                        <div class="testimonial-info">
+                            <h4>Hidden name.</h4>
+                            <p>unknown</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">kontak</span>
+                <h2 class="section-title">Mending jangan menghubungi kalu cuma mau pinjem seratus :v</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text animate-on-scroll">
+                    <p>
+                        Ingin mengubungi? Langsung aja. 
+                        Tapi ingat, saya hanya merespons hal-hal yang berdampak 
+                        dan aligned dengan arah saya.
+                    </p>
+                    <br>
+                    <p style="color: var(--gray-500); font-size: 0.9rem;">
+                        "PENTING!!!" - Kalo nggak ada urusan penting, 
+                        mending cari aktifitas lain atau fokus sama diri sendiri aja. jangan malah kepoin kehidupan orang lain -_-
+                    </p>
+                </div>
+                <div class="contact-methods animate-on-scroll">
+                    <a href="#" class="contact-item" onclick="alert('WhatsApp: +62 8xx-xxxx-xxxx (placeholder)'); return false;">
+                        <div class="contact-icon"> - </div>
+                        <div class="contact-info">
+                            <h4>WhatsApp</h4>
+                            <p>+62 882-0153-49200</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item" onclick="alert('Instagram: @panglima_imam_mahdi_ (placeholder)'); return false;">
+                        <div class="contact-icon"> - </div>
+                        <div class="contact-info">
+                            <h4>Instagram</h4>
+                            <p>@panglima_imam_mahdi_</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item" onclick="alert('Email: 123syawal1@gmail.com (placeholder)'); return false;">
+                        <div class="contact-icon"> - </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>123syawal1@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-note animate-on-scroll">
+                <p>
+                    "Gabisa, udah fokus." - Jangan expect balasan cepat kalau 
+                    pesannya nggak urgent atau nggak jelas tujuannya.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">DHeeN</div>
+            <p class="footer-text">Grow with Revenge and Ambition</p>
+            <p class="footer-signature">Built with Focus • 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
